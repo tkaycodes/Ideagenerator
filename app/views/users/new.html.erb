@@ -1,13 +1,24 @@
+<!-- error messages -->
 <% if @user.errors.any? %>
-  <ul>
-    <% @user.errors.full_messages.each do |msg| %>
+  <div class="alert alert-danger" role="alert">
+    <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> 
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
-    <% end %>
-  </ul>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
 
+<!-- actual form -->
 <%=form_for @user do |u|%>
 <h1 class="customheader">Registration</h1><hr>
+  <%=u.label :first_name%>
+  <%=u.text_field :first_name, class: "textbox"%>
+
+  <%=u.label :last_name%>
+  <%=u.text_field :last_name, class: "textbox"%>
+
   <%=u.label :email%>
   <%=u.email_field :email, class: "textbox"%>
   
