@@ -3,8 +3,8 @@
 <head>
   <title>COOL</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-<%= stylesheet_link_tag    'user_auth'%>
-  <%#= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'user_auth', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -25,10 +25,10 @@
     </div>
   <% end %>
 
-
+  <div class="container">
   <!-- content -->
   <%= yield %>
-
+  </div>
   
 <!-- </div> -->
 </body>
