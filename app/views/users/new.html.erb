@@ -6,8 +6,7 @@
   </ul>
 <% end %>
 
-
-<%=form_for @user, url: users_path do |u|%>
+<%=form_for @user do |u|%>
 <h1 class="customheader">Registration</h1><hr>
   <%=u.label :email%>
   <%=u.email_field :email, class: "textbox"%>
