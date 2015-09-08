@@ -1,1 +1,9 @@
 <h1>Listing all ideas</h1>
+
+<%@ideas.each do |idea|%>
+  <blockquote id="idea_<%=idea.id%>">
+    <p><strong><%=idea.name%></strong></p>
+    <p><%=idea.body%></p>
+    <footer>Author</footer>
+  </blockquote>
+<%end%>
