@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>COOL</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+<%= stylesheet_link_tag    'user_auth'%>
+  <%#= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<!-- <div class="container"> -->
+  <!-- navbar -->
+  <%#=render '/layouts/nav'%>
+
+
+  <!-- flash messages -->
+  <% if flash[:notice] %>
+    <div class="alert alert-success" role="alert">
+      <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> <%= flash[:notice]%>
+    </div>
+  <% elsif flash[:alert] %>
+    <div class="alert alert-danger" role="alert">
+      <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> <%= flash[:alert] %>
+    </div>
+  <% end %>
+
+
+  <!-- content -->
+  <%= yield %>
+
+  
+<!-- </div> -->
+</body>
+</html>
