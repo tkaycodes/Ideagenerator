@@ -16,7 +16,7 @@
   <!-- navbar -->
   <%#=render '/layouts/nav'%>
 
-
+  <div class="container">
   <!-- flash messages -->
   <% if flash[:notice] %>
     <div class="alert alert-success" role="alert">
@@ -27,6 +27,7 @@
       <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> <%= flash[:alert] %>
     </div>
   <% end %>
+  </div>
 
   <div class="container" style="margin-top:15px;">
   <!-- content -->

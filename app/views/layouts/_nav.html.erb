@@ -13,13 +13,22 @@
   <ul class="nav navbar-nav navbar-right">
     <li>
       <%=link_to "Sign Up", new_user_path%>
-      <%#if user_logged_in?%>
-        <%#=link_to "Logged in as:#{User.find(session[:user_id]).email}", ""%>
     </li>
-    <li>
-        <%#=link_to "Logout", '/logout'%>
-      <%#end%>
-    </li>
+    <%if !session[:user_id].present?%>
+      <li>
+        <%=link_to "Login", new_session_path%>
+      </li>
+    <%end%>
+      <%if session[:user_id].present?%>
+        <li>
+          <%=link_to "Logged in as:#{User.find(session[:user_id]).email}", ""%>
+        </li>
+        <li>
+          <%=link_to "Logout", '/logout'%>
+          <%#end%>
+        </li>
+      <%end%>
+
   </ul> 
 
   </div>

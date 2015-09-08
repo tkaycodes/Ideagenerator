@@ -1,0 +1,12 @@
+<%=form_tag sessions_path do %>
+<h1 class="customheader">Login</h1><hr>
+
+  <%=label_tag :email%>
+  <%=text_field_tag :email, nil, class: "textbox"%>
+  <%=label_tag :password%>
+  <%=password_field_tag :password, nil, class: "textbox"%><hr>
+  <%=submit_tag "Login", class: 'button'%>
+
+<%end%>
+
+<%=link_to "Sign up", new_user_path%>

@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   resources :ideas
 
   resources :users, only: [:new, :create];
+
+  resources :sessions, only: [:new, :create];
+  get '/logout' => "sessions#destroy"
   
   root "ideas#index"
   
