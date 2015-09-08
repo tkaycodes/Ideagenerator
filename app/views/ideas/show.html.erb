@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-sm-12">
+
+    <!-- div containing post body -->
+    <div style="border:1px solid;border-radius:5px;padding:10px;min-height:200px;">
+      <h2><%=@idea.name%></h1>
+      <%=@idea.body%><hr>
+      <%if @idea.user%>
+      -<%=@idea.user.first_name%>&nbsp;<%=@idea.user.last_name%>
+      <%end%>
+    </div><%=link_to "Back", root_path%>
+    <br><br><br>
+
+
+    <!-- displaying all comments -->
+    <h4>Comments:</h4>
+    <%@idea.comments.each do |comment|%>
+    <blockquote>
+      <%=comment.comment%>  
+      <footer><%=comment.user.first_name%>&nbsp;<%=comment.user.last_name%></footer>
+    </blockquote>
+    <%end%><hr>
+    
+
+    <!-- form for new comments -->
+    <% if session[:user_id] %>
+
+      <%=form_for [@idea, Comment.new] do |c|%>
+        <%=c.label :comment%>
+        <%=c.text_field :comment, class: "form-control"%><br>
+        <%=c.hidden_field :user_id, :value=>session[:user_id]%>
+          <%=c.submit class: "btn btn-primary"%>
+      <%end%>
+
+    <% end %>
+
+  </div>

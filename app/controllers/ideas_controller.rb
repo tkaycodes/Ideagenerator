@@ -1,5 +1,6 @@
 class IdeasController < ApplicationController
   before_action :authenticate_user!, only: [:new]
+  before_action :get_idea, only: [:show]
 
   def index
     @ideas = Idea.all
@@ -21,6 +22,9 @@ class IdeasController < ApplicationController
     end
   end  
 
+  def show
+  end
+
   private
   def idea_params
     params.require(:idea).permit(:name, :body, :user_id)
@@ -28,5 +32,9 @@ class IdeasController < ApplicationController
 
   def authenticate_user!
     redirect_to new_session_path, notice: "You must login first!" unless session[:user_id].present?
+  end
+
+  def get_idea
+    @idea=Idea.find(params[:id])
   end
 end
