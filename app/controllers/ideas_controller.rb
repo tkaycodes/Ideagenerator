@@ -1,4 +1,5 @@
 class IdeasController < ApplicationController
+  before_action :authenticate_user!, only: [:new]
 
   def index
     @ideas = Idea.all
@@ -6,11 +7,13 @@ class IdeasController < ApplicationController
 
   def new
     @idea = Idea.new
+    @user=@idea.user
   end
 
   def create
     @idea = Idea.new(idea_params)
     if @idea.save
+      # binding.pry
       redirect_to ideas_path, notice: "Idea Saved"
     else
       flash[:notice] = "Couldnt Save your Idea :("
@@ -20,6 +23,10 @@ class IdeasController < ApplicationController
 
   private
   def idea_params
-    params.require(:idea).permit(:name, :body)
+    params.require(:idea).permit(:name, :body, :user_id)
+  end
+
+  def authenticate_user!
+    redirect_to new_session_path, notice: "You must login first!" unless session[:user_id].present?
   end
 end

@@ -4,6 +4,10 @@
   <blockquote id="idea_<%=idea.id%>">
     <p><strong><%=idea.name%></strong></p>
     <p><%=idea.body%></p>
+    <%if idea.user%>
+    <footer><%=idea.user.first_name%>&nbsp;<%=idea.user.last_name%></footer>
+    <%else%>
     <footer>Author</footer>
+    <%end%>
   </blockquote>
 <%end%>
