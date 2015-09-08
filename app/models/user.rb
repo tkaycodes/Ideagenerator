@@ -2,6 +2,9 @@ class User < ActiveRecord::Base
   has_many :idea
   has_many :comments
 
+  has_many :joineds
+  has_many :joined_ideas, through: :joineds, source: :idea
+
   has_secure_password
 
   validates :password, length: { minimum: 8 }

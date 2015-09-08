@@ -2,14 +2,28 @@
 
 <%@ideas.each do |idea|%>
   <%=link_to idea_path(idea) do %>
+  <div class="col-sm-8">
     <blockquote id="idea_<%=idea.id%>">
       <p><strong><%=idea.name%></strong></p>
       <p><%=idea.body%></p>
       <%if idea.user%>
-      <footer><%=idea.user.first_name%>&nbsp;<%=idea.user.last_name%></footer>
+        <footer><%=idea.user.first_name%>&nbsp;<%=idea.user.last_name%></footer>
       <%else%>
-      <footer>Author</footer>
+        <footer>Author</footer><br>
+      <%end%>
+      <span style="font-size:10px;">
+      Members: <%=idea.users.map{|x|x.email}.join(",")%>
+      </span>
       <%end%>
     </blockquote>
-  <%end%>
+  </div>
+
+  <div class="col-sm-4">
+    <div style="margin-top:20px;">
+    <%if session[:user_id]%>
+      <%=link_to "Join", joineds_path(user_id:session[:user_id], idea_id:idea.id), class: "btn btn-primary", method: "post"%>
+    <%end%>
+    </div>
+  </div>
+
 <%end%>

@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create]
 
+  resources :joineds, only: :create
+
 
   resources :sessions, only: [:new, :create];
   get '/logout' => "sessions#destroy"

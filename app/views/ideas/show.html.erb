@@ -3,11 +3,12 @@
 
     <!-- div containing post body -->
     <div style="border:1px solid;border-radius:5px;padding:10px;min-height:200px;">
-      <h2><%=@idea.name%></h1>
+      <h2><%=@idea.name%></h1>  
       <%=@idea.body%><hr>
       <%if @idea.user%>
-      -<%=@idea.user.first_name%>&nbsp;<%=@idea.user.last_name%>
+      <strong>-<%=@idea.user.first_name%>&nbsp;<%=@idea.user.last_name%></strong><br><br>
       <%end%>
+      Members:
     </div><%=link_to "Back", root_path%>
     <br><br><br>
 
