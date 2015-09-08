@@ -1,0 +1,23 @@
+<nav class="nav navbar" style="background-color:black;border-radius:0px;color:white">
+  <div class="container-fluid">
+
+  <ul class="nav navbar-nav">
+    <li>
+      <%=link_to "Home", root_path, style: "color:red"%>
+    </li>
+
+  </ul>
+  <ul class="nav navbar-nav navbar-right">
+    <li>
+      <%#if user_logged_in?%>
+        <%#=link_to "Logged in as:#{User.find(session[:user_id]).email}", ""%>
+    </li>
+    <li>
+        <%#=link_to "Logout", '/logout'%>
+      <%#end%>
+    </li>
+  </ul> 
+
+  </div>
+  
+</nav>
