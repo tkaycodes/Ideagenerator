@@ -14,3 +14,7 @@
  *= require_tree ./common
  *= require_self
  */
+
+ #newideabutton:hover{
+  color:black;
+ }
