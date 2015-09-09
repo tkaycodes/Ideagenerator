@@ -8,7 +8,7 @@
       <%if @idea.user%>
       <strong>-<%=@idea.user.first_name%>&nbsp;<%=@idea.user.last_name%></strong><br><br>
       <%end%>
-      Members:
+      Members:<%=@idea.users.map{|x|x.first_name+" " + x.last_name}.join(" , ")%>
     </div><%=link_to "Back", root_path%>
     <br><br><br>
 

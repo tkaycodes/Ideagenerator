@@ -12,7 +12,7 @@
         <footer>Author</footer><br>
       <%end%>
       <span style="font-size:10px;">
-      Members: <%=idea.users.map{|x|x.email}.join(",")%>
+      Members: <%=idea.users.map{|x|x.first_name + " " + x.last_name}.join(",")%>
       </span>
       <%end%>
     </blockquote>
