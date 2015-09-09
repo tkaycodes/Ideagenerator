@@ -38,7 +38,11 @@
     </div>
     <div style="margin-top:20px;">
     <%if session[:user_id]%>
+      <%if Like.exists?(user_id: session[:user_id], idea_id: idea.id)%>
+      <%=link_to "Liked", idea_like_path(idea, Like.where(user_id:session[:user_id], idea_id:idea.id)[0].id), class: "btn btn-primary active", method: "delete"%>
+      <%else%>
       <%=link_to "Like", idea_likes_path(idea), class: "btn btn-primary", method: "post"%>
+      <%end%>
     <%end%>
     </div>
   </div>
