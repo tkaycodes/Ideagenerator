@@ -33,14 +33,23 @@
   <div class="col-sm-4">
     <div style="margin-top:20px;">
     <%if session[:user_id]%>
+      <!-- if already joined, link_to unjoin -->
+      <%if Joined.exists?(user_id: session[:user_id], idea_id:idea.id)%>
+      <%=link_to "Joined", joined_path(Joined.where(user_id: session[:user_id], idea_id:idea.id)[0]), class: "btn btn-primary active", method: "delete"%>
+      <%else%>
+      <!-- else, like_to join -->
       <%=link_to "Join", joineds_path(user_id:session[:user_id], idea_id:idea.id), class: "btn btn-primary", method: "post"%>
+      <%end%>
     <%end%>
     </div>
     <div style="margin-top:20px;">
+    <!-- if user logged in -->
     <%if session[:user_id]%>
+      <!-- if already liked, link_to unlike -->
       <%if Like.exists?(user_id: session[:user_id], idea_id: idea.id)%>
       <%=link_to "Liked", idea_like_path(idea, Like.where(user_id:session[:user_id], idea_id:idea.id)[0].id), class: "btn btn-primary active", method: "delete"%>
       <%else%>
+      <!-- link_to like -->
       <%=link_to "Like", idea_likes_path(idea), class: "btn btn-primary", method: "post"%>
       <%end%>
     <%end%>

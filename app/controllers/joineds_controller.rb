@@ -8,4 +8,14 @@ class JoinedsController < ApplicationController
       redirect_to :back, notice: "Couldnt Join"
     end
   end
+
+  def destroy
+    # render text: params
+    @joined = Joined.find(params[:id])
+    if @joined.delete
+      redirect_to :back, notice: "Un-Joined!"
+    else
+      redirect_to :back, notice: "Cant Un-Join"
+    end
+  end
 end

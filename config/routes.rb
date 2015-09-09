@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create]
 
-  resources :joineds, only: :create
+  resources :joineds, only: [:create, :destroy]
 
 
   resources :sessions, only: [:new, :create];
