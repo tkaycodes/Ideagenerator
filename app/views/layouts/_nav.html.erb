@@ -6,13 +6,13 @@
       <%=link_to "New Idea", new_idea_path, class: "btn btn-primary", style: "border-radius: 0px;"%>
     </li>
     <li>
-      <%=link_to "Home", root_path, style: "color:red"%>
+      <%=link_to "Home", root_path%>
     </li>
 
   </ul>
   <ul class="nav navbar-nav navbar-right">
     <li>
-      <%=link_to "Sign Up", new_user_path%>
+      <%=link_to "Sign Up", new_user_path if !session[:user_id].present?%>
     </li>
     <%if !session[:user_id].present?%>
       <li>

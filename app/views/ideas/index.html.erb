@@ -1,7 +1,8 @@
-<h1>Listing all ideas</h1>
+<h1 style="font-weight:200;margin-left:20px;">Listing all ideas</h1><hr>
 
 <%@ideas.each do |idea|%>
   <%=link_to idea_path(idea) do %>
+
   <div class="col-sm-8">
     <blockquote id="idea_<%=idea.id%>">
       <p><strong><%=idea.name%></strong></p>
@@ -11,19 +12,36 @@
       <%else%>
         <footer>Author</footer><br>
       <%end%>
-      <span style="font-size:10px;">
-      Members: <%=idea.users.map{|x|x.first_name + " " + x.last_name}.join(",")%>
-      </span>
-      <%end%>
-    </blockquote>
-  </div>
 
+  <!-- end of link -->
+  <%end%> 
+
+    <!-- members and like spans -->
+    <span style="font-size:10px;">
+      Members: <%=idea.users.map{|x|x.first_name + " " + x.last_name}.join(",")%> (<%=idea.users.count%>)
+    </span><br>
+    <span style="font-size:10px;">
+      Like Count: <%=idea.likes.count%>
+    </span>
+
+  </blockquote>
+  </div>
+  <!-- end of idea blockquote div -->
+
+
+  <!-- buttons to like and join for each idea -->
   <div class="col-sm-4">
     <div style="margin-top:20px;">
     <%if session[:user_id]%>
       <%=link_to "Join", joineds_path(user_id:session[:user_id], idea_id:idea.id), class: "btn btn-primary", method: "post"%>
     <%end%>
     </div>
+    <div style="margin-top:20px;">
+    <%if session[:user_id]%>
+      <%=link_to "Like", idea_likes_path(idea), class: "btn btn-primary", method: "post"%>
+    <%end%>
+    </div>
   </div>
 
 <%end%>
+<!-- end of idea -->

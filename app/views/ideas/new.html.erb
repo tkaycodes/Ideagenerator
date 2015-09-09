@@ -7,4 +7,5 @@
   <%=idea.text_area :body, class: "form-control"%><br>
   <%=idea.hidden_field :user_id, :value=>session[:user_id]%>
   <%=idea.submit class: "btn btn-primary", style: "border-radius:0px;"%>
-<%end%>
+<%end%><hr>
+<%=link_to "Back", root_path%>
